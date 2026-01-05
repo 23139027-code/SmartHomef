@@ -81,14 +81,14 @@ fun LoginScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(DeepDarkBlue),
+            .background(LightBackground),
         contentAlignment = Alignment.Center
     ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth(0.9f)
                 .wrapContentHeight(),
-            colors = CardDefaults.cardColors(containerColor = DarkNavyBlue),
+            colors = CardDefaults.cardColors(containerColor = WhiteSurface),
             shape = RoundedCornerShape(16.dp),
             elevation = CardDefaults.cardElevation(8.dp)
         ) {
@@ -111,7 +111,7 @@ fun LoginScreen(
                     text = "Smart Home",
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold,
-                    color = TextWhite
+                    color = TextDark
                 )
 
                 Text(
@@ -136,8 +136,8 @@ fun LoginScreen(
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = ElectricBlue,
                         unfocusedBorderColor = BlueGrey,
-                        focusedTextColor = TextWhite,
-                        unfocusedTextColor = TextWhite,
+                        focusedTextColor = TextDark,
+                        unfocusedTextColor = TextDark,
                         cursorColor = ElectricBlue
                     )
                 )
@@ -166,8 +166,8 @@ fun LoginScreen(
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = ElectricBlue,
                         unfocusedBorderColor = BlueGrey,
-                        focusedTextColor = TextWhite,
-                        unfocusedTextColor = TextWhite,
+                        focusedTextColor = TextDark,
+                        unfocusedTextColor = TextDark,
                         cursorColor = ElectricBlue
                     )
                 )
@@ -216,7 +216,7 @@ fun LoginScreen(
                     if (isLoading) {
                         Text(
                             text = "⏳",
-                            color = TextWhite,
+                            color = androidx.compose.ui.graphics.Color.White,
                             fontSize = 24.sp
                         )
                     } else {
