@@ -120,9 +120,9 @@ fun MainScreen(
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = PrimaryBlue,
                             selectedTextColor = PrimaryBlue,
-                            indicatorColor = PrimaryBlue.copy(alpha = 0.15f),
-                            unselectedIconColor = Color.Gray,
-                            unselectedTextColor = Color.Gray
+                            indicatorColor = Color.Transparent,
+                            unselectedIconColor = androidx.compose.ui.graphics.Color(0xFF757575),
+                            unselectedTextColor = androidx.compose.ui.graphics.Color(0xFF757575)
                         )
                     )
                 }
