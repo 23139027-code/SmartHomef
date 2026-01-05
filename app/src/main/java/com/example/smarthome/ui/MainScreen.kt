@@ -109,17 +109,18 @@ fun MainScreen(
                     NavigationBarItem(
                         icon = {
                             Icon(
-                                tab.icon,
+                                imageVector = tab.icon,
                                 contentDescription = tab.title
                             )
                         },
                         label = { Text(tab.title) },
                         selected = selectedTab == tab,
                         onClick = { selectedTab = tab },
+                        alwaysShowLabel = true,
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = PrimaryBlue,
                             selectedTextColor = PrimaryBlue,
-                            indicatorColor = PrimaryBlue.copy(alpha = 0.1f),
+                            indicatorColor = PrimaryBlue.copy(alpha = 0.15f),
                             unselectedIconColor = Color.Gray,
                             unselectedTextColor = Color.Gray
                         )
