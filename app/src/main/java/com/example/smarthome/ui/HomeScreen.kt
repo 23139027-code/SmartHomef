@@ -532,51 +532,140 @@ fun AddDeviceButton(onClick: () -> Unit) {
 
 @Composable
 fun AddDeviceInfoDialog(onDismiss: () -> Unit) {
+    var roomName by remember { mutableStateOf("") }
+    var chipId by remember { mutableStateOf("") }
+    var interval by remember { mutableStateOf("30") }
+
     Dialog(onDismissRequest = onDismiss) {
         Card(
-            colors = CardDefaults.cardColors(containerColor = DarkNavyBlue),
+            colors = CardDefaults.cardColors(containerColor = WhiteSurface),
             shape = RoundedCornerShape(16.dp)
         ) {
             Column(
-                modifier = Modifier.padding(24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                modifier = Modifier.padding(24.dp)
             ) {
-                Icon(
-                    imageVector = Icons.Default.Info,
-                    contentDescription = null,
-                    tint = ElectricBlue,
-                    modifier = Modifier.size(48.dp)
+                // Header with close button
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Add New Device",
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = TextDark
+                    )
+                    IconButton(onClick = onDismiss) {
+                        Icon(
+                            imageVector = Icons.Default.Close,
+                            contentDescription = "Close",
+                            tint = TextGrey
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                // Room Name / Location
+                Text(
+                    text = "Room Name / Location",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = TextDark
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                OutlinedTextField(
+                    value = roomName,
+                    onValueChange = { roomName = it },
+                    placeholder = { Text("E.g., Living Room", color = TextGrey) },
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true,
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = ElectricBlue,
+                        unfocusedBorderColor = androidx.compose.ui.graphics.Color(0xFFE0E0E0),
+                        focusedTextColor = TextDark,
+                        unfocusedTextColor = TextDark,
+                        cursorColor = ElectricBlue
+                    )
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
+                // Chip ID (ESP32 ID)
                 Text(
-                    text = "How to Add Device",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = TextWhite
+                    text = "Chip ID (ESP32 ID)",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = TextDark
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                OutlinedTextField(
+                    value = chipId,
+                    onValueChange = { chipId = it },
+                    placeholder = { Text("E.g., esp32_01", color = TextGrey) },
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true,
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = ElectricBlue,
+                        unfocusedBorderColor = androidx.compose.ui.graphics.Color(0xFFE0E0E0),
+                        focusedTextColor = TextDark,
+                        unfocusedTextColor = TextDark,
+                        cursorColor = ElectricBlue
+                    )
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "Must match the code uploaded to the ESP32",
+                    fontSize = 12.sp,
+                    color = TextGrey
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
+                // Measurement Interval
                 Text(
-                    text = "1. Make sure your ESP32 device is powered on\n" +
-                            "2. ESP32 should connect to MQTT broker\n" +
-                            "3. Device will auto-appear in Home screen\n" +
-                            "4. You can rename it using Edit button",
-                    color = TextGrey,
-                    fontSize = 14.sp,
-                    lineHeight = 20.sp
+                    text = "Measurement Interval (Seconds)",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = TextDark
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                OutlinedTextField(
+                    value = interval,
+                    onValueChange = { interval = it },
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = ElectricBlue,
+                        unfocusedBorderColor = androidx.compose.ui.graphics.Color(0xFFE0E0E0),
+                        focusedTextColor = TextDark,
+                        unfocusedTextColor = TextDark,
+                        cursorColor = ElectricBlue
+                    )
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))
 
+                // Save Button
                 Button(
-                    onClick = onDismiss,
+                    onClick = {
+                        // TODO: Implement save logic
+                        onDismiss()
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = ElectricBlue),
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp),
+                    shape = RoundedCornerShape(8.dp)
                 ) {
-                    Text("Got it", color = TextWhite)
+                    Text(
+                        "Save Device",
+                        color = androidx.compose.ui.graphics.Color.White,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold
+                    )
                 }
             }
         }
