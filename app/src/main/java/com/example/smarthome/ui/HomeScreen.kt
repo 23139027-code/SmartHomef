@@ -260,9 +260,9 @@ fun RoomCard(
                             onMasterToggle(newMode)
                         },
                         colors = SwitchDefaults.colors(
-                            checkedThumbColor = TextWhite,
+                            checkedThumbColor = androidx.compose.ui.graphics.Color.White,
                             checkedTrackColor = SuccessGreen,
-                            uncheckedThumbColor = TextGrey,
+                            uncheckedThumbColor = androidx.compose.ui.graphics.Color.White,
                             uncheckedTrackColor = BlueGrey
                         )
                     )
@@ -366,7 +366,7 @@ fun SensorChip(
         Spacer(modifier = Modifier.width(6.dp))
         Text(
             text = value,
-            color = TextWhite,
+            color = TextDark,
             fontSize = 14.sp,
             fontWeight = FontWeight.SemiBold
         )
@@ -397,21 +397,21 @@ fun DeviceControlButton(
                 .clip(CircleShape)
                 .background(
                     if (displayOn) ElectricBlue
-                    else BlueGrey.copy(alpha = if (masterEnabled) 1f else 0.5f)
+                    else androidx.compose.ui.graphics.Color(0xFFE0E0E0).copy(alpha = if (masterEnabled) 1f else 0.5f)
                 ),
             contentAlignment = Alignment.Center
         ) {
             Icon(
                 imageVector = icon,
                 contentDescription = label,
-                tint = if (displayOn) TextWhite else TextGrey,
+                tint = if (displayOn) androidx.compose.ui.graphics.Color.White else androidx.compose.ui.graphics.Color(0xFF757575),
                 modifier = Modifier.size(32.dp)
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = label,
-            color = if (displayOn) ElectricBlue else TextGrey,
+            color = if (displayOn) ElectricBlue else androidx.compose.ui.graphics.Color(0xFF757575),
             fontSize = 12.sp,
             fontWeight = FontWeight.Medium
         )
