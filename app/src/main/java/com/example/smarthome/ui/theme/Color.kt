@@ -42,3 +42,10 @@ val SurfaceColor = WhiteSurface              // Surface alias (white)
 val TextPrimary = TextDark                   // Primary text alias (dark)
 val PrimaryBlue = ElectricBlue               // Primary color alias
 
+// ====================================================================
+// BACKWARD COMPATIBILITY - Old color names (for existing screens)
+// ====================================================================
+val DeepDarkBlue = LightBackground           // Maps to light background
+val DarkNavyBlue = WhiteSurface              // Maps to white surface
+val TextWhite = TextDark                     // Maps to dark text for light theme
+
